@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/moruk</item>
+        <item name="colorPrimaryDark">@color/buttonColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/moruk</item>
+        <item name="android:textColor">@color/fontColor</item>
+
+
+    </style>
+    <style name="ButtonStyle">
+        <item name="android:background">@drawable/btnormal</item>
+
+
+    </style>
+
+</resources>

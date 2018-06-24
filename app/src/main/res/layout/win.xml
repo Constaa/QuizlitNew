@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/moruk"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/gewonnen"
+        android:id="@+id/imageView6"
+        android:layout_marginBottom="396dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tvUS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="63dp"
+        android:text="@string/du_hast_das_quiz_erfolgreich_bestanden_gl_ckwunsch"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/formular"
+        android:id="@+id/imageView7"
+        android:layout_marginBottom="34dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/iVHome"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignStart="@+id/tvUS"
+        android:layout_alignTop="@+id/iVRepeat"
+        android:layout_marginStart="18dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/home2" />
+
+    <ImageView
+        android:id="@+id/iVRepeat"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignEnd="@+id/tvUS"
+        android:layout_below="@+id/tvUS"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/rewind2" />
+
+</RelativeLayout>

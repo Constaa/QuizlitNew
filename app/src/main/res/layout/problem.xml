@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/moruk"
+    >
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/frage" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView3"
+        android:layout_alignTop="@+id/eTName"
+        android:cropToPadding="false"
+        android:scaleType="matrix"
+        app:srcCompat="@drawable/formular" />
+
+    <EditText
+        android:id="@+id/eTName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:textColor="@color/fontColorDafrk"
+        android:textColorHint="@color/fontColorDafrk" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView5"
+        android:layout_alignTop="@+id/eTEmail"
+        app:srcCompat="@drawable/formular" />
+
+    <EditText
+        android:id="@+id/eTEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView3"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:hint="E-Mail"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/fontColorDafrk" />
+
+    <TextView
+        android:text="@string/abschicken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp"
+        android:textAllCaps="true"
+        android:layout_below="@+id/imageView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:textColorHint="@color/fontColorDafrk"
+        android:gravity="top|left"
+        android:lines="5"
+        android:maxLines="8"
+        android:id="@+id/eTDetails"
+        android:textAlignment="viewStart"
+        android:hint="@string/beschreibe_dein_problem"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/imageView5"
+        android:layout_alignStart="@+id/imageView5"
+        android:layout_marginStart="11dp" />
+
+    <Button
+        android:id="@+id/btSenden"
+        style="@style/ButtonStyle"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/textView"
+        android:text="@string/senden"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</RelativeLayout>

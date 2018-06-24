@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Einsenden">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/tVPeinsenden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="33dp"
+            android:text="@string/frage_einsenden"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="38sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/eTFrage"
+            android:layout_width="375dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/eTAntwort"
+            android:layout_alignStart="@+id/eTAntwort"
+            android:layout_marginBottom="54dp"
+            android:background="@color/fontColor"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="@string/deine_frage"
+            android:inputType="text|textCapSentences|textPersonName"
+            android:textColor="@color/fontColorDafrk"
+            android:textColorHint="@color/fontColorDafrk"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/eTAntwort"
+            android:layout_width="375dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@color/fontColor"
+            android:ems="10"
+            android:hint="@string/deine_antworten_richtige_zuerst"
+            android:inputType="text"
+            android:textColor="@color/fontColorDafrk"
+            android:textColorHint="@color/fontColorDafrk" />
+
+        <Button
+            android:id="@+id/btSenden"
+            style="@style/ButtonStyle"
+            android:layout_width="500dp"
+            android:layout_height="100dp"
+            android:layout_alignStart="@+id/tVPeinsenden"
+            android:layout_below="@+id/eTAntwort"
+            android:layout_marginTop="20dp"
+            android:text="@string/senden"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:id="@+id/linearLayout">
+
+
+    </LinearLayout>
+</RelativeLayout>
