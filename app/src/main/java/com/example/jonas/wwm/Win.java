@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Dies ist die Klasse, in der die das eigentliche Spiel passiert.
- * Die Fragen werden zum Start und nachdem die richtige Frage gewählt wurde, neu generiert bzw. zugeordnet.
- * Die Frage und die Antworten werden aus einem Fragen-Objekt genommen.
+ * Bei einem Gewinn der drei Spielmodi wird man hier her weitergeleitet.
  *
  * @author jonas dietsche, zinar kayhan, stanley prohaska
  * @version 1.0
@@ -25,10 +25,6 @@ public class Win extends AppCompatActivity {
 
     ImageView iVHome;
     ImageView iVRepeat;
-    TextView tVUS;
-
-
-    ModusWahl m = new ModusWahl();
 
 
 
@@ -37,10 +33,13 @@ public class Win extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.win);
-        m.setModus(0);
 
         iVHome = (ImageView) findViewById(R.id.iVHome);
         iVRepeat= (ImageView) findViewById(R.id.iVRepeat);
+
+
+
+
 
         iVHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +59,9 @@ public class Win extends AppCompatActivity {
 
     }
 
+    public Win() {
+
+    }
 
     public void onBackPressed() {
         Intent intent = new Intent(getBaseContext(), MainActivity.class);

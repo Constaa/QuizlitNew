@@ -15,5 +15,10 @@
 
 
     </style>
+    <style name="ButtonStyle2">
+        <item name="android:background">@drawable/btnot</item>
+
+
+    </style>
 
 </resources>

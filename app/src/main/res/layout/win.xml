@@ -16,7 +16,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/tvUS"
+        android:id="@+id/tVUS1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView6"
@@ -39,7 +39,7 @@
         android:id="@+id/iVHome"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignStart="@+id/tvUS"
+        android:layout_alignStart="@+id/tVUS1"
         android:layout_alignTop="@+id/iVRepeat"
         android:layout_marginStart="18dp"
         android:clickable="true"
@@ -49,8 +49,8 @@
         android:id="@+id/iVRepeat"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignEnd="@+id/tvUS"
-        android:layout_below="@+id/tvUS"
+        android:layout_alignEnd="@+id/tVUS1"
+        android:layout_below="@+id/tVUS1"
         android:layout_marginEnd="30dp"
         android:clickable="true"
         app:srcCompat="@drawable/rewind2" />

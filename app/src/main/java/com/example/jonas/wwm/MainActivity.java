@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
- * Dies ist die Klasse, in der die das eigentliche Spiel passiert.
- * Die Fragen werden zum Start und nachdem die richtige Frage gewählt wurde, neu generiert bzw. zugeordnet.
- * Die Frage und die Antworten werden aus einem Fragen-Objekt genommen.
+ * Das ist die Startseite und wenn man auf die Buttons klickt, wird man auf die dementsprechende
+ * Seite weitergeleitet. Wie beispielsweise auf Spiel oder Frage Einsenden.
  *
  * @author jonas dietsche, zinar kayhan, stanley prohaska
  * @version 1.0
@@ -46,6 +46,13 @@ TextView tVProblemee;
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), Einsenden.class);
                 startActivity(intent);
+            }
+        });
+        bTBestenliste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Diese Funktion ist noch nicht verfügbar!", Toast.LENGTH_SHORT).show();
+
             }
         });
         tVProblemee.setOnClickListener(new View.OnClickListener() {

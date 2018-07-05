@@ -7,10 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 /**
- * Dies ist die Klasse, in der die das eigentliche Spiel passiert.
- * Die Fragen werden zum Start und nachdem die richtige Frage gewählt wurde, neu generiert bzw. zugeordnet.
- * Die Frage und die Antworten werden aus einem Fragen-Objekt genommen.
- *
+ * Wenn der Benutzer spielen möchte, wählt der den Modus hier.
+ * Dabei wird eine Variable gepseichert und an die Spiel Klasse weitergegeben, welche zeigt
+ * welcher Modus gewählt wurde. Ebenfalls wird die Zeit von Gegen Die Zeit so übertragen.
  * @author jonas dietsche, zinar kayhan, stanley prohaska
  * @version 1.0
  *
@@ -55,7 +54,7 @@ int gdzmod = 0;
         btNormal = (Button) findViewById(R.id.btNormal);
         btINF = (Button) findViewById(R.id.btINF);
         btGDZ = (Button) findViewById(R.id.btGDZ);
-        tvUS = (TextView) findViewById(R.id.tvUS);
+        tvUS = (TextView) findViewById(R.id.tVUS1);
         frageKlasse = new Spiel();
         normal = false;
         unendlich = false;
@@ -117,7 +116,7 @@ int gdzmod = 0;
 
     }
     /**
-     * Hier wird beschrieben was die Methode macht
+     * Die Variable für den Modus für die Zeit wird weitergegeben und die Activity Spiel gestartet.
      *
      */
 

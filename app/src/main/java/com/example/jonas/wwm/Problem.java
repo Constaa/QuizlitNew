@@ -11,9 +11,8 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
- * Dies ist die Klasse, in der die das eigentliche Spiel passiert.
- * Die Fragen werden zum Start und nachdem die richtige Frage gewählt wurde, neu generiert bzw. zugeordnet.
- * Die Frage und die Antworten werden aus einem Fragen-Objekt genommen.
+ * Wenn der Benutzer ein Problem einsenden will, so gibt er hier seinen Namen, Email und das eigentliche Problem ein.
+ * Das gleiche Prinzip wie beim Frage einsenden.
  *
  * @author jonas dietsche, zinar kayhan, stanley prohaska
  * @version 1.0

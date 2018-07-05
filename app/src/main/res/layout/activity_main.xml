@@ -6,16 +6,15 @@
 
     <Button
         android:id="@+id/bTBestenliste"
-        style="@style/ButtonStyle"
+        style="@style/ButtonStyle2"
         android:layout_width="500dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/imageView3"
+        android:layout_above="@+id/bTFragen"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="65dp"
+        android:clickable="true"
         android:text="bestenliste"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:clickable="true"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btNormal"

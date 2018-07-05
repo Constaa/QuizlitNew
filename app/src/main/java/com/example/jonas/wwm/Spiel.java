@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,35 +24,38 @@ import java.util.Random;
  *
  * @author jonas dietsche, zinar kayhan, stanley prohaska
  * @version 1.0
- *
- */
+ * s
+ **/
 
 public class Spiel extends AppCompatActivity {
 
     private static final String TAG = "Spiel";
-
-
+    Win w;
     ModusWahl m;
     ProgressBar progressBar;
    CountDownTimer myCounter;
-   Button antwort1;
-   Button antwort2;
-   Button antwort3;
-   Button antwort4;
+   Button antwort1,antwort2,antwort3,antwort4;
    MyCounter counter;
    TextView tvF1;
-   int richtigeAntworten;
+   int richtigeAntworten, richtigeAntwortenGDZ, richtigeAntwortenINF;
     ArrayList<Fragen> alleFragen;
 
     Fragen aktuelleFrage;
-    Fragen f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18,f19,f20;
+    Fragen f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18,f19,f20,f21,f22,f23,f24,f25,f26,f27,f28,f29,f30,f31,f32,f33,f34,f35,f36,f37,f38,f39,f40,f41,f42,f43,f44,f45,f46,f47,f48,f49,f50;
     int moduswahl,zeitwahl, zeit;
 
 
 
     @Override
+    /**
+     * Die Fragen-Objekte werden hier erstellt und der Liste hinzugefügt.
+     * Zudem wird mit einem Switch-Case die Zeit für den GDZ-Modus mithilfe der übergebenen Variable zeitwahl eingestellt.
+     * Der Modus wird ebenfalls mit diesem Prinzip ausgewählt.
+     *
+     */
     protected void onCreate(Bundle savedInstanceState) {
         Bundle extras = getIntent().getExtras();
+        w = new Win();
         m = new ModusWahl();
         alleFragen = new ArrayList<>();
         f1 = new Fragen("Wann wurde die Mauer in Berlin niedergerissen?","1998","1981","1898","1989",false);
@@ -70,7 +75,7 @@ public class Spiel extends AppCompatActivity {
         f15 = new Fragen("Woher stammt die Siamkatze?","Mexico","Südafrika","Ägypten","Thailand",false);
         f16 = new Fragen("Was ist ein Lori?","Nager","Hund","Katze","Vogel",false);
         f17 = new Fragen("Mit welchem Gerät kann man Bilder in den Computer einlesen?","Drucker","Digitalkamera","USB","Scanner",false);
-        f18 = new Fragen("Wie lautet die chemische Formel von Sauerstoff?","O2","S2","S","O2",false);
+        f18 = new Fragen("Wie lautet die chemische Formel von Sauerstoff?","H20","S2","S","O2",false);
         f19 = new Fragen("In welchem Monat darf man Edelweiss pflücken?","Juli","Mai","Februar","Nie",false);
         f20 = new Fragen("Welcher Mensch hat alle 10 Gebote gehalten?","Mohammed","Abraham","Jesus","Moses",false);
         f21 = new Fragen("Wie viele Sterne hat die amerikanische Nationalflagge?","52","51","49","50",false);
@@ -103,7 +108,7 @@ public class Spiel extends AppCompatActivity {
         f48 = new Fragen("Welches Eishockey-Team gewann an der Olympiade 1980 Gold?","Norwegen","Schweden","Kanada","USA",false);
         f49 = new Fragen("Wie viele Seiten hat ein Pentagon?","8","7","6","5",false);
         f50 = new Fragen("Mit welchem Auto verunfallte James Dean tödlich?","Audi","Mustang","Mercedes","Porsche",false);
-    }
+
 
 
 
@@ -118,11 +123,52 @@ public class Spiel extends AppCompatActivity {
         alleFragen.add(f7);
         alleFragen.add(f8);
         alleFragen.add(f9);
+
         alleFragen.add(f10);
         alleFragen.add(f11);
         alleFragen.add(f12);
         alleFragen.add(f13);
         alleFragen.add(f14);
+        alleFragen.add(f15);
+        alleFragen.add(f16);
+        alleFragen.add(f17);
+        alleFragen.add(f18);
+        alleFragen.add(f19);
+        alleFragen.add(f20);
+
+        alleFragen.add(f21);
+        alleFragen.add(f22);
+        alleFragen.add(f23);
+        alleFragen.add(f24);
+        alleFragen.add(f25);
+        alleFragen.add(f26);
+        alleFragen.add(f27);
+        alleFragen.add(f28);
+        alleFragen.add(f29);
+
+        alleFragen.add(f30);
+        alleFragen.add(f31);
+        alleFragen.add(f32);
+        alleFragen.add(f33);
+        alleFragen.add(f34);
+        alleFragen.add(f35);
+        alleFragen.add(f36);
+        alleFragen.add(f37);
+        alleFragen.add(f38);
+        alleFragen.add(f39);
+
+        alleFragen.add(f40);
+        alleFragen.add(f41);
+        alleFragen.add(f42);
+        alleFragen.add(f43);
+        alleFragen.add(f44);
+        alleFragen.add(f45);
+        alleFragen.add(f46);
+        alleFragen.add(f47);
+        alleFragen.add(f48);
+        alleFragen.add(f49);
+        alleFragen.add(f50);
+
 
         Log.d(TAG, "fragen geaddet: ");
         moduswahl = (int) extras.get("MODUS");
@@ -178,6 +224,8 @@ switch (moduswahl) {
      * in der Klasse ModusWahl. Die ProgressBar läuft in den letzten 10 Sekunden herunter.
      * In jeder Spielmodus Methode wird der Inhalt des geklickten Buttons mit der hinterlegten richtigen Antwort (rAntwort)
      * des aktuellen Fragen-Objekts verglichen und je nachdem entschieden, was passiert.
+     * Zusätzlich wird eine Variable hochgezählt, die die Anzahl der richtigen Antworten zählt für eine optionale
+     * Bestenliste.
      *
      */
 
@@ -186,7 +234,7 @@ switch (moduswahl) {
         myCounter.cancel();
         counter.start();
         progressBar.setProgress(100);
-        richtigeAntworten = 0;
+        richtigeAntwortenGDZ = 0;
         starteNeueFrageOhneTimerStop();
         Log.d(TAG, "gegenDieZeit: antworten zugwiesen");
 
@@ -197,8 +245,8 @@ switch (moduswahl) {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: button geklickt");
                 if (antwort1.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenGDZ = richtigeAntwortenGDZ+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenGDZ);
                     if (alleFragen.size() > 0){
                         starteNeueFrageOhneTimerStop();
                     }
@@ -220,8 +268,8 @@ switch (moduswahl) {
             public void onClick(View view) {
                 Log.d(TAG, "onClick: button geklickt");
                 if (antwort2.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenGDZ = richtigeAntwortenGDZ+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenGDZ);
                     if (alleFragen.size() > 0){
                         starteNeueFrageOhneTimerStop();
                     }
@@ -231,6 +279,7 @@ switch (moduswahl) {
 
                 }
                 else {
+                 //   b.setValueGDZ(richtigeAntwortenGDZ);
                     verloren();
                 }
             }
@@ -240,8 +289,8 @@ switch (moduswahl) {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: button geklickt");
                 if (antwort3.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenGDZ = richtigeAntwortenGDZ+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenGDZ);
                     if (alleFragen.size() > 0){
                         starteNeueFrageOhneTimerStop();
                     }
@@ -251,6 +300,7 @@ switch (moduswahl) {
 
                 }
                 else {
+                  //  b.setValueGDZ(richtigeAntwortenGDZ);
                     verloren();
                 }
             }
@@ -263,8 +313,8 @@ switch (moduswahl) {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: button geklickt");
                 if (antwort4.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenGDZ = richtigeAntwortenGDZ+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenGDZ);
                     if (alleFragen.size() > 0){
                         starteNeueFrageOhneTimerStop();
                     }
@@ -274,6 +324,7 @@ switch (moduswahl) {
 
                 }
                 else {
+                 //   b.setValueGDZ(richtigeAntwortenGDZ);
                     verloren();
                 }
             }
@@ -283,6 +334,8 @@ switch (moduswahl) {
     /**
      * Der Timer wird nicht gestartet und auch nicht angezeigt. Man verliert nur, indem man
      * die Frage falsch beantwortet. Gewonnen hat man, wenn die Liste (alleFragen) leer ist.
+     * Zusätzlich wird eine Variable hochgezählt, die die Anzahl der richtigen Antworten zählt für eine optionale
+     * Bestenliste.
      *
      */
 
@@ -290,7 +343,7 @@ switch (moduswahl) {
         progressBar.setVisibility(View.INVISIBLE);
         Log.d(TAG, "unendlichkeit: ");
         myCounter = new MyCountDownTimer(10000, 500);
-        richtigeAntworten = 0;
+        richtigeAntwortenINF = 0;
         starteNeueFrage();
         myCounter.cancel();
 
@@ -300,10 +353,10 @@ switch (moduswahl) {
             @Override
             public void onClick(View v) {
                 if (antwort1.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenINF = richtigeAntwortenINF+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenINF);
                     if (alleFragen.size() > 0){
-                        starteNeueFrage();
+                        starteNeueFrageOhneTimerStop();
                     }
                     else {
                         gewonnen();
@@ -311,6 +364,7 @@ switch (moduswahl) {
 
                 }
                 else {
+                   // b.setValueINF(richtigeAntwortenINF);
                     verloren();
                 }
             }});
@@ -321,10 +375,10 @@ switch (moduswahl) {
             @Override
             public void onClick(View view) {
                 if (antwort2.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenINF = richtigeAntwortenINF+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenINF);
                     if (alleFragen.size() > 0){
-                        starteNeueFrage();
+                        starteNeueFrageOhneTimerStop();
                     }
                     else {
                         gewonnen();
@@ -332,6 +386,7 @@ switch (moduswahl) {
 
                 }
                 else {
+                  //  b.setValueINF(richtigeAntwortenINF);
                     verloren();
                 }
             }
@@ -340,10 +395,10 @@ switch (moduswahl) {
             @Override
             public void onClick(View v) {
                 if (antwort3.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenINF = richtigeAntwortenINF+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenINF);
                     if (alleFragen.size() > 0){
-                        starteNeueFrage();
+                        starteNeueFrageOhneTimerStop();
                     }
                     else {
                         gewonnen();
@@ -351,6 +406,7 @@ switch (moduswahl) {
 
                 }
                 else {
+                  //  b.setValueINF(richtigeAntwortenINF);
                     verloren();
                 }
             }
@@ -362,10 +418,10 @@ switch (moduswahl) {
             @Override
             public void onClick(View v) {
                 if (antwort4.getText().equals(aktuelleFrage.getrAntwort())) {
-                    richtigeAntworten = richtigeAntworten+1;
-                    Log.d(TAG, "onClick: "+richtigeAntworten);
+                    richtigeAntwortenINF = richtigeAntwortenINF+1;
+                    Log.d(TAG, "onClick: "+richtigeAntwortenINF);
                     if (alleFragen.size() > 0){
-                        starteNeueFrage();
+                        starteNeueFrageOhneTimerStop();
                     }
                     else {
                         gewonnen();
@@ -373,6 +429,7 @@ switch (moduswahl) {
 
                 }
                 else {
+                  //  b.setValueINF(richtigeAntwortenINF);
                     verloren();
                 }
             }
@@ -381,7 +438,8 @@ switch (moduswahl) {
     /**
      * Der Timer geht 10 Sekunden. Man hat entweder verloren, wenn diese 10 Sekunden überschritten werden oder wenn man eine
      * falsche Antwort anklickt. Gewonnen hat man bei 15 richtig beantworteten Fragen. Die Anzahl der richtig beantworteten Fragen
-     * wird immer hochgezählt.
+     * wird immer hochgezählt. Zusätzlich wird eine Variable hochgezählt, die die Anzahl der richtigen Antworten zählt für eine optionale
+     * Bestenliste.
      *
      */
 
@@ -479,7 +537,9 @@ switch (moduswahl) {
         });
     }
     /**
-     * Hier wird beschrieben was die Methode macht
+     * Der Timer und die ProgressBar werden gestoppt und der Nutzer wird auf die "Win" Seite weitergeleitet und hat gewonnen.
+     * Diese Methode trifft dann ein, wenn der Nutzer die Voraussetzungen für den Gewinn erfüllt hat.
+     *
      *
      */
 
@@ -489,7 +549,8 @@ switch (moduswahl) {
         startActivity(intent);
     }
     /**
-     * Hier wird beschrieben was die Methode macht
+     * Diese Methode nimmt die zufällig ausgewählte Frage und führt die Methode antwortenZuweisen() aus.
+     * Der Counter wird gestoppt und dann gestartet.
      *
      */
 
@@ -500,7 +561,8 @@ switch (moduswahl) {
         myCounter.start();
     }
     /**
-     * Hier wird beschrieben was die Methode macht
+     * Dies ist die Methode für den Unendlichkeitsmodus, da dort kein Timer vorhanden ist und dieser auch nicht
+     * gestartet werden muss.
      *
      */
 
@@ -509,7 +571,8 @@ switch (moduswahl) {
         antwortenZuweisen(indexFrage);
     }
     /**
-     * Hier wird beschrieben was die Methode macht
+     * Eine zufällige Zahl wird gewürfelt, dabei wird die Größe der Liste der Fragen berücksichtigt.
+     * @return der INT-Wert der zufälligen Zahl (Index von alleFragen[]).
      *
      */
 
@@ -523,7 +586,10 @@ switch (moduswahl) {
     }
 
     /**
-     * Hier wird beschrieben was die Methode macht
+     * @param rnd der INT-Wert der zufälligen Frage
+     * die aktuelle Frage wird durch den Wert rnd bestimmt.
+     * Dann wird die Frage durch dieses Objekt in der Liste zugwiesen, sowie auch die Antworten.
+     * Die Antworten werden zufällig angeordnet.
      *
      */
 
@@ -564,7 +630,7 @@ switch (moduswahl) {
 
     }
     /**
-     * Hier wird beschrieben was die Methode macht
+     * Diese Methode verhindert das zurückgehen während man in einer Frage ist.
      *
      */
 
@@ -598,6 +664,7 @@ switch (moduswahl) {
 
     /**
      * Diese Methode wird ausgeführt, wenn eine falsche Antwort gewählt wurde oder die Zeit abgelaufen ist.
+     * Dadurch vibriert das Endgerät kurz und der Timer wird gestoppt und man kommt auf die "Lose" Seite.
      *
      */
 
@@ -628,7 +695,8 @@ public void verloren() {
       @Override
       public void onFinish() {
         progressBar.setProgress(0);
-          verloren();
+
+          gewonnen();
       }
   }
 

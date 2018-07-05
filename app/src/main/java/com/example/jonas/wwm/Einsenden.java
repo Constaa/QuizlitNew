@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- * Dies ist die Klasse, in der die das eigentliche Spiel passiert.
- * Die Fragen werden zum Start und nachdem die richtige Frage gewählt wurde, neu generiert bzw. zugeordnet.
- * Die Frage und die Antworten werden aus einem Fragen-Objekt genommen.
+ * Wenn der Benutzer eine Frage senden will, gibt er seine Frage und die 4 Antwortmöglichkeit an.
+ * Wenn dieser auf Senden klickt, so kommt ein Choose-Fenster, in dem er die App zum versenden auswählen kann.
+ * Die Fragen werden via E-Mail o.ä. verschickt.
  *
  * @author jonas dietsche, zinar kayhan, stanley prohaska
  * @version 1.0
